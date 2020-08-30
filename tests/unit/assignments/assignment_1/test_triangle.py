@@ -1,4 +1,4 @@
-from polygon.triangle import Triangle
+from assignments.assignment_1.polygon.triangle import Triangle
 import pytest
 
 
@@ -7,13 +7,13 @@ class TestTriangle:
     def test_valid_triangle(self, a, b, c):
         triangle = Triangle(a, b, c)
 
-        assert triangle.is_valid() == True
+        assert triangle.is_valid() is True
 
     @pytest.mark.parametrize("a,b,c", [(1, 1, 2), (1, 2, 1), (2, 1, 1)])
     def test_invalid_triangle(self, a, b, c):
         triangle = Triangle(a, b, c)
 
-        assert triangle.is_valid() == False
+        assert triangle.is_valid() is False
 
     @pytest.mark.parametrize("a,b,c", [(10, 10, 10)])
     def test_equilateral_triangle(self, a, b, c):
