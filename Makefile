@@ -50,3 +50,19 @@ checks:
 .PHONY: black
 black:
 	@python3 -m black -t py36 --exclude="build/|buck-out/|dist/|_build/|pip/|\.pip/|\.git/|\.hg/|\.mypy_cache/|\.tox/|\.venv/" .
+
+## Tests
+
+.PHONY: tests
+tests:
+	@python3 -m coverage run --source=$(ARGS) --branch -m pytest $(ARGS)
+
+.PHONY: report
+report:
+	@make tests
+	@python3 -m coverage report
+
+.PHONY: report-html
+report-html:
+	@make tests
+	@python3 -m coverage html
