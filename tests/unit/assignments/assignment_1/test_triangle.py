@@ -1,4 +1,4 @@
-from assignments.assignment_1.polygon.triangle import Triangle
+from assignments.assignment_1.triangle import Triangle
 import pytest
 
 

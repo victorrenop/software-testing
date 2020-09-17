@@ -2,7 +2,7 @@ from assignments.assignment_3.silly_pascal import SillyPascal
 import pytest
 
 
-class TestSilltPascal:
+class TestSillyPascal:
     @pytest.mark.parametrize("identifier", [("a12"), ("a"), ("abcde1")])
     def test_valid_identifier(self, identifier):
         assert SillyPascal.is_valid(identifier) is True
@@ -12,7 +12,7 @@ class TestSilltPascal:
 
     def test_contains_not_alphanumeric(self):
         assert SillyPascal.is_valid("a12#") is False
-    
+
     def test_null_string(self):
         assert SillyPascal.is_valid(None) is False
 
