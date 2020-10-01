@@ -18,6 +18,13 @@ class TestKataBowling:
         game.roll(3)
         assert game.score() == 16
 
+    def test_strike(self):
+        game = KataBowling()
+        game.roll(10)
+        game.roll(3)
+        game.roll(4)
+        assert game.score() == 24
+
     def roll_many(self, rolls: int, pins: int, game: KataBowling):
         for i in range(rolls):
             game.roll(pins)
