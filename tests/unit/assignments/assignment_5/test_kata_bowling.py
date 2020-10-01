@@ -4,12 +4,16 @@ game = KataBowling()
 
 class TestKataBowling:
     def test_gutter_game(self):
-        for i in range(20):
-            game.roll(0)
+        self.roll_many(20, 0, game)
         assert game.score() == 0
 
     def test_all_ones(self):
-        for i in range(20):
-            game.roll(1)
+        self.roll_many(20, 1, game)
         assert game.score() == 20
+
+    # def test_spare(self):
+
+    def roll_many(self, rolls: int, pins: int, game: KataBowling):
+        for i in range(rolls):
+            game.roll(pins)
         

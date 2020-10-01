@@ -1,9 +1,13 @@
 class KataBowling:
     def __init__(self):
-        self.match_score = 0
+        self.rolls = []
+        self.current_roll = 0
 
     def roll(self, round_score: int) -> int:
-        self.match_score += round_score
+        self.rolls.append(round_score)
 
     def score(self) -> int:
-        return self.match_score
+        score = 0
+        for roll in self.rolls:
+            score += roll
+        return score
