@@ -13,13 +13,15 @@ class RPGDamageClassifier:
         return total_damage_dealt
     
     def _calc_physical_damage(self, damage: float) -> float:
-        total_damage_dealt = damage
-        if damage >= 1000.0 and damage <= 3000.0:
-            total_damage_dealt += total_damage_dealt*self.first_multiplier
-        return float("{:.2f}".format(total_damage_dealt))
+        bonus_damage = 0
+        if damage >= 1000.0:
+            bonus_damage += (min(damage - 1000.00, 999.99))*self.first_multiplier
+        if damage >= 3000.0:
+            bonus_damage += min(damage - 3000.00, 1999.99)*self.second_multiplier
+        return float("{:.2f}".format(damage + bonus_damage))
 
     def _calc_magical_damage(self, damage: float) -> float:
-        total_damage_dealt = damage
-        if damage >= 1000.0 and damage <= 3000.0:
-            total_damage_dealt += total_damage_dealt*self.first_multiplier
-        return float("{:.2f}".format(total_damage_dealt))
+        bonus_damage = 0
+        if damage >= 1000.0:
+            bonus_damage += min(damage, 2999.99)*self.first_multiplier
+        return float("{:.2f}".format(damage + bonus_damage))
